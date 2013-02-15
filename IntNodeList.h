@@ -9,19 +9,35 @@
 #ifndef intnodelist_h
 #define intnodelist_h
 
-typedef struct node{
-    int element; // data within list
-    struct node* next; // pointer to next node
-    struct node* prev; // pointer to previous node
+#include <stdbool.h>
+
+typedef struct node {
+    int element;
+    struct node* prev;
 }
 node;
 
-node* NodeList(int);
+typedef struct {
+    node* top;
+}
+nodeList;
 
-void NL_push(node*, int);
+nodeList* IntNodeList(int);
 
-int NL_pop(node*);
+node* IntNode(int);
 
-node* NL_traverse(node*);
+nodeList* INL_clone(nodeList*);
+
+void INL_push(nodeList*, int);
+
+int INL_pop(nodeList*);
+
+bool INL_search(nodeList*, int);
+
+nodeList* INL_filter_(nodeList*, bool (*)(node*));
+
+nodeList* INL_map_(nodeList*, int (*)(int));
+
+int INL_reduce(nodeList*, int (*)(node*));
 
 #endif
