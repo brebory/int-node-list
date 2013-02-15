@@ -36,7 +36,11 @@ bool INL_search(nodeList*, int);
 
 nodeList* INL_filter_(nodeList*, bool (*)(node*));
 
+nodeList* INL_filter(nodeList*, bool (*)(node*));
+
 nodeList* INL_map_(nodeList*, int (*)(int));
+
+nodeList* INL_map(nodeList*, int (*)(int));
 
 int INL_reduce(nodeList*, int (*)(node*));
 

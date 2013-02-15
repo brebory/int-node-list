@@ -142,38 +142,56 @@ bool INL_search(nodeList* this, int term) {
 
 nodeList* INL_filter_(nodeList* this, bool (*func)(node* item)) {
     node* head = this->top;
-    nodeList* new = NULL;
+    nodeList* reverse = NULL;
+    nodeList* new;
     
     do {
         if (func(this->top)) {
-            if (new == NULL) {
-                new = IntNodeList(this->top->element);
+            if (reverse == NULL) {
+                reverse = IntNodeList(this->top->element);
             } else {
-                INL_push(new, this->top->element);
+                INL_push(reverse, this->top->element);
             }
         }
      } while ((this->top = this->top->prev) != NULL);
 
     this->top = head;
     
+    new = IntNodeList(reverse->top->element);
+    
+    while ((reverse->top = reverse->top->prev) != NULL) {
+        INL_push(new, reverse->top->element);
+    }
+
+    free(reverse);
+    
     return new;
 }
 
 nodeList* INL_filter(nodeList* this, bool (*func)(node* item)) {
     node* head = this->top;
-    nodeList* new = NULL;
+    nodeList* reverse = NULL;
+    nodeList* new;
     
     do {
         if (func(this->top)) {
-            if (new == NULL) {
-                new = IntNodeList(this->top->element);
+            if (reverse == NULL) {
+                reverse = IntNodeList(this->top->element);
             } else {
-                INL_push(new, this->top->element);
+                INL_push(reverse, this->top->element);
             }
         }
     } while ((this->top = this->top->prev) != NULL);
     
     this->top = head;
+    
+    new = IntNodeList(reverse->top->element);
+    
+    while ((reverse->top = reverse->top->prev) != NULL) {
+        INL_push(new, reverse->top->element);
+    }
+    
+    free(reverse);
     
     return new;
 }

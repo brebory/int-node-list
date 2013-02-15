@@ -23,6 +23,10 @@ void testFixture(FILE* fp, bool correct, uint64_t id, const char *testName) {
     }
 }
 
+int multiply_by_5(int number) {
+    return number * 5;
+}
+
 
 int main(int argc, const char * argv[])
 {
@@ -32,6 +36,8 @@ int main(int argc, const char * argv[])
     int pop_results[SIZE];
     int clone_results1[SIZE];
     int clone_results2[SIZE];
+    int map_results1[SIZE];
+    int map_results2[SIZE];
     int i;
     bool correct = true;
     uint64_t absTime = mach_absolute_time();
@@ -86,6 +92,23 @@ int main(int argc, const char * argv[])
     }
     
     testFixture(fp, correct, absTime, "INL_clone");
+    
+    correct = true;
+    
+    list = IntNodeList(buff[0]);
+    for (i = 1; i < SIZE; i++)
+        INL_push(list, buff[i]);
+    
+    list = INL_map_(list, multiply_by_5);
+    
+    for (i = 0; i < SIZE; i++) {
+        map_results1[i] = INL_pop(list);
+        map_results2[i] = i * 50;
+        if (map_results1[i] != map_results2[i])
+            correct = false;
+    }
+    
+    testFixture(fp, correct, absTime, "INL_map_");
     
     fclose(fp);
 }
