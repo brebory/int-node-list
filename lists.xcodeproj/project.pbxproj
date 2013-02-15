@@ -6,12 +6,44 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		4D5F7BEC16CD836600B6E6EC /* IntNodeList.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D5F7BEB16CD836600B6E6EC /* IntNodeList.h */; };
+		4D5F7BEF16CDB2BD00B6E6EC /* IntNodeList.c in Sources */ = {isa = PBXBuildFile; fileRef = 4D5F7BED16CD836F00B6E6EC /* IntNodeList.c */; };
+		4D5F7BF816CDB5F600B6E6EC /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 4D5F7BF716CDB5F600B6E6EC /* main.c */; };
+		4D5F7BFA16CDB5F600B6E6EC /* IntNodeListUnitTests.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4D5F7BF916CDB5F600B6E6EC /* IntNodeListUnitTests.1 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4D5F7BF216CDB5F600B6E6EC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				4D5F7BFA16CDB5F600B6E6EC /* IntNodeListUnitTests.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		4D5F7BE416CD831900B6E6EC /* liblists.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblists.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D5F7BEB16CD836600B6E6EC /* IntNodeList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntNodeList.h; sourceTree = "<group>"; };
+		4D5F7BED16CD836F00B6E6EC /* IntNodeList.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = IntNodeList.c; sourceTree = "<group>"; };
+		4D5F7BF416CDB5F600B6E6EC /* IntNodeListUnitTests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = IntNodeListUnitTests; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D5F7BF716CDB5F600B6E6EC /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		4D5F7BF916CDB5F600B6E6EC /* IntNodeListUnitTests.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = IntNodeListUnitTests.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		4D5F7BE116CD831900B6E6EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D5F7BF116CDB5F600B6E6EC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -24,6 +56,9 @@
 		4D5F7BD916CD831900B6E6EC = {
 			isa = PBXGroup;
 			children = (
+				4D5F7BEB16CD836600B6E6EC /* IntNodeList.h */,
+				4D5F7BED16CD836F00B6E6EC /* IntNodeList.c */,
+				4D5F7BF616CDB5F600B6E6EC /* IntNodeListUnitTests */,
 				4D5F7BE516CD831900B6E6EC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -32,8 +67,18 @@
 			isa = PBXGroup;
 			children = (
 				4D5F7BE416CD831900B6E6EC /* liblists.a */,
+				4D5F7BF416CDB5F600B6E6EC /* IntNodeListUnitTests */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		4D5F7BF616CDB5F600B6E6EC /* IntNodeListUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				4D5F7BF716CDB5F600B6E6EC /* main.c */,
+				4D5F7BF916CDB5F600B6E6EC /* IntNodeListUnitTests.1 */,
+			);
+			path = IntNodeListUnitTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -43,6 +88,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D5F7BEC16CD836600B6E6EC /* IntNodeList.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +112,23 @@
 			productReference = 4D5F7BE416CD831900B6E6EC /* liblists.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		4D5F7BF316CDB5F600B6E6EC /* IntNodeListUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D5F7BFB16CDB5F600B6E6EC /* Build configuration list for PBXNativeTarget "IntNodeListUnitTests" */;
+			buildPhases = (
+				4D5F7BF016CDB5F600B6E6EC /* Sources */,
+				4D5F7BF116CDB5F600B6E6EC /* Frameworks */,
+				4D5F7BF216CDB5F600B6E6EC /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IntNodeListUnitTests;
+			productName = IntNodeListUnitTests;
+			productReference = 4D5F7BF416CDB5F600B6E6EC /* IntNodeListUnitTests */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -88,6 +151,7 @@
 			projectRoot = "";
 			targets = (
 				4D5F7BE316CD831900B6E6EC /* lists */,
+				4D5F7BF316CDB5F600B6E6EC /* IntNodeListUnitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -97,6 +161,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D5F7BEF16CDB2BD00B6E6EC /* IntNodeList.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D5F7BF016CDB5F600B6E6EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D5F7BF816CDB5F600B6E6EC /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +245,20 @@
 			};
 			name = Release;
 		};
+		4D5F7BFC16CDB5F600B6E6EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4D5F7BFD16CDB5F600B6E6EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -189,6 +276,14 @@
 			buildConfigurations = (
 				4D5F7BE916CD831900B6E6EC /* Debug */,
 				4D5F7BEA16CD831900B6E6EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4D5F7BFB16CDB5F600B6E6EC /* Build configuration list for PBXNativeTarget "IntNodeListUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D5F7BFC16CDB5F600B6E6EC /* Debug */,
+				4D5F7BFD16CDB5F600B6E6EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
