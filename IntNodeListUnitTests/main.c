@@ -30,8 +30,8 @@ int multiply_by_5(int number) {
 
 int main(int argc, const char * argv[])
 {
-    nodeList* list;
-    nodeList* list2;
+    IntNodeList* list;
+    IntNodeList* list2;
     int buff[SIZE];
     int pop_results[SIZE];
     int clone_results1[SIZE];
@@ -40,7 +40,7 @@ int main(int argc, const char * argv[])
     int map_results2[SIZE];
     int i;
     bool correct = true;
-    uint64_t absTime = mach_absolute_time();
+    uint64_t testID = mach_absolute_time();
     
     FILE* fp = fopen("log", "a");
     if (fp == NULL)
@@ -48,23 +48,23 @@ int main(int argc, const char * argv[])
 
     for (i = 0; i < SIZE; i++) {
         buff[i] = i * 10;
-        list = IntNodeList(buff[i]);
+        list = createIntNodeList(buff[i]);
         if (list->top->element != buff[i])
             correct = false;
     }
     
-    testFixture(fp, correct, absTime, "IntNodeList");
+    testFixture(fp, correct, testID, "IntNodeList");
     
     correct = true;
     
-    list = IntNodeList(buff[0]);
+    list = createIntNodeList(buff[0]);
     for (i = 1; i < SIZE; i++) {
         INL_push(list, buff[i]);
         if (list->top->element != buff[i])
             correct = false;
     }    
     
-    testFixture(fp, correct, absTime, "INL_push");
+    testFixture(fp, correct, testID, "INL_push");
     
     correct = true;
     
@@ -74,11 +74,11 @@ int main(int argc, const char * argv[])
             correct = false;
     }
     
-    testFixture(fp, correct, absTime, "INL_pop");
+    testFixture(fp, correct, testID, "INL_pop");
     
     correct = true;
     
-    list = IntNodeList(buff[0]);
+    list = createIntNodeList(buff[0]);
     for (i = 1; i < SIZE; i++)
         INL_push(list, buff[i]);
     
@@ -91,11 +91,11 @@ int main(int argc, const char * argv[])
             correct = false;
     }
     
-    testFixture(fp, correct, absTime, "INL_clone");
+    testFixture(fp, correct, testID, "INL_clone");
     
     correct = true;
     
-    list = IntNodeList(buff[0]);
+    list = createIntNodeList(buff[0]);
     for (i = 1; i < SIZE; i++)
         INL_push(list, buff[i]);
     
@@ -108,7 +108,7 @@ int main(int argc, const char * argv[])
             correct = false;
     }
     
-    testFixture(fp, correct, absTime, "INL_map_");
+    testFixture(fp, correct, testID, "INL_map_");
     
     fclose(fp);
 }

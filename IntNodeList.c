@@ -16,14 +16,14 @@
  * Returns a pointer to this nodeList `this`.
  */
 
-nodeList* IntNodeList(int element) {
-    nodeList* list = malloc(sizeof(nodeList));
+IntNodeList* createIntNodeList(int element) {
+    IntNodeList* list = malloc(sizeof(IntNodeList));
     if (list == NULL) {
         free(list);
         return NULL;
     }
     
-    node* item = IntNode(element);
+    IntNode* item = createIntNode(element);
 
     item->element = element;
     item->prev = NULL;
@@ -41,8 +41,8 @@ nodeList* IntNodeList(int element) {
  * use only - a node* is pretty useless by itself.
  */
 
-node* IntNode(int element) {
-    node* node = malloc(sizeof(node));
+IntNode* createIntNode(int element) {
+    IntNode* node = malloc(sizeof(node));
     if (node == NULL) {
         free(node);
         return NULL;
@@ -54,7 +54,7 @@ node* IntNode(int element) {
     return node;
 }
 
-nodeList* INL_reverse(nodeList* this) {
+IntNodeList* INL_reverse(IntNodeList* this) {
     //implement
     return NULL;
 }
@@ -66,10 +66,10 @@ nodeList* INL_reverse(nodeList* this) {
  * derives it's element from `source`.
  */
 
-nodeList* INL_clone(nodeList* source) {
-    node* head = source->top;
-    nodeList* reverse = IntNodeList(source->top->element);
-    nodeList* new;
+IntNodeList* INL_clone(IntNodeList* source) {
+    IntNode* head = source->top;
+    IntNodeList* reverse = createIntNodeList(source->top->element);
+    IntNodeList* newNode;
     
     // I don't know if this is the most effecient implementation of this. I don't know how to not copy the list backward.
     
@@ -77,15 +77,15 @@ nodeList* INL_clone(nodeList* source) {
         INL_push(reverse, source->top->element);
     }
     
-    new = IntNodeList(reverse->top->element);
+    newNode = createIntNodeList(reverse->top->element);
     
     while ((reverse->top = reverse->top->prev) != NULL) {
-        INL_push(new, reverse->top->element);
+        INL_push(newNode, reverse->top->element);
     }
     
     source->top = head;
     free(reverse);
-    return new;
+    return newNode;
 }
 
 /*
@@ -97,8 +97,8 @@ nodeList* INL_clone(nodeList* source) {
  * `next = NULL`, and `prev = this`;
  */
 
-void INL_push(nodeList* this, int element) {
-    node* node = IntNode(element);
+void INL_push(IntNodeList* this, int element) {
+    IntNode* node = createIntNode(element);
     if (node == NULL)
         return;
     
@@ -113,8 +113,8 @@ void INL_push(nodeList* this, int element) {
  * Finally, returns the `int element` inside of `old`.
  */
 
-int INL_pop(nodeList* this) {
-    node* old = this->top;
+int INL_pop(IntNodeList* this) {
+    IntNode* old = this->top;
     int element = old->element;
     
     this->top = this->top->prev;
@@ -125,7 +125,7 @@ int INL_pop(nodeList* this) {
 }
 
 
-bool INL_search(nodeList* this, int term) {
+bool INL_search(IntNodeList* this, int term) {
     
     //implement
     return NULL;
@@ -140,15 +140,15 @@ bool INL_search(nodeList* this, int term) {
  * of this algorithm. Also, I'm pretty sure it causes memory leaks.
  */
 
-nodeList* INL_filter_(nodeList* this, bool (*func)(node* item)) {
-    node* head = this->top;
-    nodeList* reverse = NULL;
-    nodeList* new;
+IntNodeList* INL_filter_(IntNodeList* this, bool (*func)(IntNode* item)) {
+    IntNode* head = this->top;
+    IntNodeList* reverse = NULL;
+    IntNodeList* newINL;
     
     do {
         if (func(this->top)) {
             if (reverse == NULL) {
-                reverse = IntNodeList(this->top->element);
+                reverse = createIntNodeList(this->top->element);
             } else {
                 INL_push(reverse, this->top->element);
             }
@@ -157,26 +157,26 @@ nodeList* INL_filter_(nodeList* this, bool (*func)(node* item)) {
 
     this->top = head;
     
-    new = IntNodeList(reverse->top->element);
+    newINL = createIntNodeList(reverse->top->element);
     
     while ((reverse->top = reverse->top->prev) != NULL) {
-        INL_push(new, reverse->top->element);
+        INL_push(newINL, reverse->top->element);
     }
 
     free(reverse);
     
-    return new;
+    return newINL;
 }
 
-nodeList* INL_filter(nodeList* this, bool (*func)(node* item)) {
-    node* head = this->top;
-    nodeList* reverse = NULL;
-    nodeList* new;
+IntNodeList* INL_filter(IntNodeList* this, bool (*func)(IntNode* item)) {
+    IntNode* head = this->top;
+    IntNodeList* reverse = NULL;
+    IntNodeList* newINL;
     
     do {
         if (func(this->top)) {
             if (reverse == NULL) {
-                reverse = IntNodeList(this->top->element);
+                reverse = createIntNodeList(this->top->element);
             } else {
                 INL_push(reverse, this->top->element);
             }
@@ -185,19 +185,19 @@ nodeList* INL_filter(nodeList* this, bool (*func)(node* item)) {
     
     this->top = head;
     
-    new = IntNodeList(reverse->top->element);
+    newINL = createIntNodeList(reverse->top->element);
     
     while ((reverse->top = reverse->top->prev) != NULL) {
-        INL_push(new, reverse->top->element);
+        INL_push(newINL, reverse->top->element);
     }
     
     free(reverse);
     
-    return new;
+    return newINL;
 }
 
-nodeList* INL_map_(nodeList* this, int (*func)(int element)) {
-    node* head = this->top;
+IntNodeList* INL_map_(IntNodeList* this, int (*func)(int element)) {
+    IntNode* head = this->top;
     
     do {
         this->top->element = func(this->top->element);
@@ -208,8 +208,8 @@ nodeList* INL_map_(nodeList* this, int (*func)(int element)) {
     return this;
 }
 
-int INL_reduce(nodeList* this, int (*func)(node* item)) {
-    node* head = this->top;
+int INL_reduce(IntNodeList* this, int (*func)(IntNode* item)) {
+    IntNode* head = this->top;
     int combine = 0;
 
     do {

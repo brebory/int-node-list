@@ -11,37 +11,37 @@
 
 #include <stdbool.h>
 
-typedef struct node {
+typedef struct IntNode {
     int element;
-    struct node* prev;
+    struct IntNode* prev;
 }
-node;
+IntNode;
 
 typedef struct {
-    node* top;
+    IntNode* top;
 }
-nodeList;
+IntNodeList;
 
-nodeList* IntNodeList(int);
+IntNodeList* createIntNodeList(int);
 
-node* IntNode(int);
+IntNode* createIntNode(int);
 
-nodeList* INL_clone(nodeList*);
+IntNodeList* INL_clone(IntNodeList*);
 
-void INL_push(nodeList*, int);
+void INL_push(IntNodeList*, int);
 
-int INL_pop(nodeList*);
+int INL_pop(IntNodeList*);
 
-bool INL_search(nodeList*, int);
+bool INL_search(IntNodeList*, int);
 
-nodeList* INL_filter_(nodeList*, bool (*)(node*));
+IntNodeList* INL_filter_(IntNodeList*, bool (*)(IntNode*));
 
-nodeList* INL_filter(nodeList*, bool (*)(node*));
+IntNodeList* INL_filter(IntNodeList*, bool (*)(IntNode*));
 
-nodeList* INL_map_(nodeList*, int (*)(int));
+IntNodeList* INL_map_(IntNodeList*, int (*)(int));
 
-nodeList* INL_map(nodeList*, int (*)(int));
+IntNodeList* INL_map(IntNodeList*, int (*)(int));
 
-int INL_reduce(nodeList*, int (*)(node*));
+int INL_reduce(IntNodeList*, int (*)(IntNode*));
 
 #endif

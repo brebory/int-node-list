@@ -15,3 +15,13 @@ testid: 582402297201012> Results of testing INL_push: INL_push works as expected
 testid: 582402297201012> Results of testing INL_pop: INL_pop works as expected.
 testid: 582402297201012> Results of testing INL_clone: INL_clone works as expected.
 testid: 582402297201012> Results of testing INL_map_: INL_map_ has errors.
+testid: 599052277263385> Results of testing IntNodeList: IntNodeList works as expected.
+testid: 599052277263385> Results of testing INL_push: INL_push works as expected.
+testid: 599052277263385> Results of testing INL_pop: INL_pop works as expected.
+testid: 599052277263385> Results of testing INL_clone: INL_clone works as expected.
+testid: 599052277263385> Results of testing INL_map_: INL_map_ has errors.
+testid: 599060114269721> Results of testing IntNodeList: IntNodeList works as expected.
+testid: 599060114269721> Results of testing INL_push: INL_push works as expected.
+testid: 599060114269721> Results of testing INL_pop: INL_pop works as expected.
+testid: 599060114269721> Results of testing INL_clone: INL_clone works as expected.
+testid: 599060114269721> Results of testing INL_map_: INL_map_ has errors.
